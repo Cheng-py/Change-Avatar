@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>更改头像</title>
+    <style>
+        #all{
+            margin : 0px auto;
+            height:300px;
+            width:250px;
+
+
+        }
+        img
+           {
+            height:250px;
+            width:250px;
+            border-radius: 120px;
+            border:solid 1px gray;
+           }
+
+        h3{
+            text-align:center;
+         }
+    </style>
+</head>
+<body>
+
+<div id="all">
+
+        <img src="../static/{{ avatar }}" alt="" >
+        <h3>更改头像</h3>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+</div>
+
+</body>
+</html>
