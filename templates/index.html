@@ -8,8 +8,6 @@
             margin : 0px auto;
             height:300px;
             width:250px;
-
-
         }
         img
            {
@@ -18,22 +16,37 @@
             border-radius: 120px;
             border:solid 1px gray;
            }
-
         h3{
             text-align:center;
          }
+
+         .alert {
+            position: relative;
+            padding: 7px;
+            margin: 7px 0;
+            border: 1px solid transparent;
+            color: #004085;
+            background-color: #cce5ff;
+            border-color: #b8daff;
+            border-radius: 5px;
+            }
     </style>
 </head>
 <body>
 
 <div id="all">
+            <!-- 插入到页面标题上方 -->
+    {% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+    {% endfor %}
 
-        <img src="../static/{{ avatar }}" alt="" >
-        <h3>更改头像</h3>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
+
+    <img src="../static/{{ avatar }}" alt="" >
+    <h3>更改头像</h3>
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=file>
+              <input type=submit value=Upload>
+            </form>
 </div>
 
 </body>

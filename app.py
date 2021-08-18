@@ -3,10 +3,11 @@ from flask import Flask, flash, request, redirect, url_for,Request,render_templa
 from werkzeug.utils import secure_filename
 
 
-UPLOAD_FOLDER = '/Python/Python/Play/ChangeAvatar/static'
+UPLOAD_FOLDER = '/Python/Python/Play/Change-Avatar/static'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'some secret words'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 app.config["AVATAR"]= "user2.jpg"
@@ -22,7 +23,7 @@ def upload_file():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return redirect(request.url)
+            return redirect(url_for('upload_file'))
         file = request.files['file']
         if file.filename == '':
             flash('No selected file')
